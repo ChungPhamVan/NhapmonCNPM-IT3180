@@ -27,7 +27,7 @@
                     <ul id="etalage">
                         <li>
                             <img class="etalage_thumb_image img-responsive" src='<c:url value="images/${products.thumbnail}"></c:url>' />
-                            <img class="etalage_source_image img-responsive" src='<c:url value="images/${products.thumbnail}"></c:url>'/>
+                            <img style="display: none" class="etalage_source_image img-responsive" src='<c:url value="images/${products.thumbnail}"></c:url>'/>
                             </li>
                         </ul>
                         <div class="clearfix"> </div>

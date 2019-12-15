@@ -6,6 +6,7 @@
 package com.nhapmoncnpm.dao;
 
 import com.nhapmoncnpm.model.UserModel;
+import java.util.List;
 
 /**
  *
@@ -16,4 +17,6 @@ public interface IUserDAO extends GenericDAO<UserModel> {
     UserModel findByEmailAddressAndStatus(String emailAddress, Integer status);
     Long save(UserModel userModel);
     UserModel findOne(Long id);
+    List<UserModel> findByIdRole();
+    void update(UserModel userModel);
 }

@@ -276,4 +276,6 @@
             ga('create', 'UA-38894584-2', 'auto');
             ga('send', 'pageview');
         </script>
+        <script type="text/javascript" src="<c:url value="/template/admin/js/bootstrap.min1.js" />" ></script>
+    </body>
 </html>

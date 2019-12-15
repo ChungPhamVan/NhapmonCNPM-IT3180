@@ -15,6 +15,15 @@ public class UserModel extends AbstractModel<UserModel> {
     private String firstName;
     private String lastName;
     private String emailAddress;
+    private int access;
+
+    public int getAccess() {
+        return access;
+    }
+
+    public void setAccess(int access) {
+        this.access = access;
+    }
 
     public String getFirstName() {
         return firstName;

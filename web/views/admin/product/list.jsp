@@ -110,6 +110,7 @@
             });
             $(document).ready(function () {
                 $("button#buttonDelete").unbind("click").on("click", function (event) {
+                    confirm("Are you sure you want to delete this item?");
                     $.get("/nhapmoncnpm_IT3180/admin-product?type=listanddelete", {id: $("#id").val()}, function (responseText) {
                         location.reload();
                     });

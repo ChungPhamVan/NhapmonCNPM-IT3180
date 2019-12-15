@@ -8,6 +8,7 @@ package com.nhapmoncnpm.service.impl;
 import com.nhapmoncnpm.dao.IUserDAO;
 import com.nhapmoncnpm.model.UserModel;
 import com.nhapmoncnpm.service.IUserService;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -30,6 +31,21 @@ public class UserService implements IUserService{
     public UserModel save(UserModel userModel) {
         Long id = userDAO.save(userModel);
         return userDAO.findOne(id);
+    }
+
+    @Override
+    public List<UserModel> findByIdRole() {
+        return userDAO.findByIdRole();
+    }
+
+    @Override
+    public UserModel findOne(Long id) {
+        return userDAO.findOne(id);
+    }
+
+    @Override
+    public void update(UserModel userModel) {
+        userDAO.update(userModel);
     }
     
 }

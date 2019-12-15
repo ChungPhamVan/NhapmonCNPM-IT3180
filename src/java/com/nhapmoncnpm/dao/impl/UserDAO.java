@@ -36,7 +36,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public Long save(UserModel userModel) {
-        String query = "INSERT INTO user_human(idrole, emailaddress, password, status, lastname, firstname) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user_human(idrole, emailaddress, password, status, lastname, firstname, access) VALUES (?, ?, ?, ?, ?, ?, 1)";
         return insert(query, 2, userModel.getEmailAddress(), userModel.getPassword(), 1, userModel.getLastName(), userModel.getFirstName());
     }
 
@@ -45,6 +45,22 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         String query = "SELECT * FROM user_human WHERE iduser = ?";
         List<UserModel> users = query(query.toString(), new UserMapper(), id);
         return users.isEmpty() ? null : users.get(0);
+    }
+
+    @Override
+    public List<UserModel> findByIdRole() {
+        StringBuilder query = new StringBuilder("SELECT * FROM user_human AS u");
+        query.append(" INNER JOIN role AS r ON r.idrole=u.idrole");
+        query.append(" WHERE r.code = ?");
+        List<UserModel> users = query(query.toString(), new UserMapper(), "USER");
+        return users;
+    }
+
+    @Override
+    public void update(UserModel userModel) {
+        String query = "UPDATE user_human SET access = ? WHERE iduser = ?";
+        update(query, userModel.getAccess(), userModel.getId());
+        
     }
     
 }

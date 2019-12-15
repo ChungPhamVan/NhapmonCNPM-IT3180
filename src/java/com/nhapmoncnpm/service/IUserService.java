@@ -6,6 +6,7 @@
 package com.nhapmoncnpm.service;
 
 import com.nhapmoncnpm.model.UserModel;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,7 @@ public interface IUserService {
     UserModel findByUserNameAndPasswordAndStatus(String emailAddress, String password, Integer status);
     UserModel findByEmailAddressAndStatus(String emailAddress, Integer status);
     UserModel save(UserModel userModel);
+    List<UserModel> findByIdRole(); 
+    UserModel findOne(Long id);
+    void update(UserModel userModel);
 }

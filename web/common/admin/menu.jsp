@@ -39,6 +39,14 @@
 
     <ul class="nav nav-list">
         <li class="">
+            <a href="<c:url value="/admin-home" />">
+                <i class="fa fa-list"></i>
+                Home
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
             <a href="<c:url value="/admin-product?type=list&page=1&maxPageItem=6&sortName=title&sortBy=asc" />">
                 <i class="fa fa-list"></i>
                 List Products
@@ -50,6 +58,14 @@
             <a href="<c:url value="/admin-category?type=list&page=1&maxPageItem=8&sortName=code&sortBy=asc" />">
                 <i class="fas fa-list-alt"></i>
                 List Categories
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="<c:url value="/admin-user" />">
+                <i class="fas fa-list-alt"></i>
+                List Users
             </a>
 
             <b class="arrow"></b>

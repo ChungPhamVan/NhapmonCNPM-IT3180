@@ -75,6 +75,8 @@ public class HomeController extends HttpServlet {
                     case "not_login":
                         messageAttribute = "Not login";
                         break;
+                    case "admin_block":
+                        messageAttribute = "The administrator has blocked you, please contact the administrator to recover";
                 }
                 request.setAttribute("message", messageAttribute);
                 request.setAttribute("alert", alert);
@@ -199,7 +201,7 @@ public class HomeController extends HttpServlet {
         if (action != null && action.equals("login")) {
             UserModel model = FormUtil.toModel(UserModel.class, request);
             model = userService.findByUserNameAndPasswordAndStatus(model.getEmailAddress(), model.getPassword(), 1);
-            if (model != null) {
+            if (model != null && model.getAccess() == 1) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
                 UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
                 switch (model.getRoleModel().getCode()) {
@@ -210,6 +212,8 @@ public class HomeController extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/admin-home");
                         break;
                 }
+            } else if(model != null && model.getAccess() == 0) {
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=admin_block&alert=danger");
             } else {
                 response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
             }
